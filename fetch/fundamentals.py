@@ -1,8 +1,12 @@
+'''
+This code is to fetch fundmanetal data and store it
+'''
+
 import requests
 import json
 
 
-class Scrape(object):
+class Scrape:
 	'''Base class for scraping data from tickertape'''
 	def __init__(self, sIds, user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"):
 		self.sIds = sIds
