@@ -27,13 +27,17 @@ class FetchPrice:
 		self._location = location
 		self._exchange = exchange
 
-
 	'''
 	input: tickers - list of tickers for which data is to be fetched
+			redLocation - Location to store names of companies with no data returned
 	output: csv file containing entire historical data stored in location
+			redlist - csv file containing names of companies with no data returned by yfinance
 	'''
-	def store(self,tickers,redLocation = 'data/redlist'):
+	def store(self,tickers=pd.read_csv('data/info.csv').ticker.tolist(),redLocation = 'data/redlist'):
+
+		#List to store companies giving no output data
 		redlist = []
+
 		#Code to fetch NSE stock price data from yfinance and store it at location
 		for i,ticker in enumerate(tickers):		
 			data = yf.Ticker(f'{ticker}.{self._exchange}')
@@ -45,7 +49,9 @@ class FetchPrice:
 				histData = histData.sort_index()
 				print(i,ticker)
 				histData.to_csv(f'{self._location}/{ticker}.csv')
+
 		pd.Series(redlist).to_csv(f'{redLocation}.csv',index=False,header=False)
+		
 		return
 
 		
