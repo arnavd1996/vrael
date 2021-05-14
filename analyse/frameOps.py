@@ -31,7 +31,6 @@ class LoadFrames:
 	def Data(self):
 		return self._Data
 
-
 class SlicedFrames(LoadFrames):
 
 	def __init__(self,stDa,enDa):
