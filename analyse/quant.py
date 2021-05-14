@@ -94,6 +94,8 @@ class QuantAnalyse:
 		prevPrice = df.Close.iloc[-1*window]
 		out[f'return_{window}'] = ((currentPrice-prevPrice)/prevPrice)*100
 
+		out[f'volume_{window}'] = df.Volume.iloc[-1*window:].mean()
+
 		indicators = self.checkIndicators()
 
 		for indicator in indicators:

@@ -52,6 +52,10 @@ class FetchPrice:
 
 		pd.Series(redlist).to_csv(f'{redLocation}.csv',index=False,header=False)
 		
-		return
+		return	
+
+
+
+
 
 		
